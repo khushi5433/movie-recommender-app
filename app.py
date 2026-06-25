@@ -39,7 +39,7 @@ import gzip
 movie_dict=pickle.load(open('movie_dict.pkl','rb'))
 movies=pd.DataFrame(movie_dict)
 similarity=pickle.load(gzip.open('similarity.pkl.gz','rb'))
-selected_movie_name=st.selectbox('How would you like to be contacted?',movies['title'].values)
+selected_movie_name=st.selectbox('Select the movie for which you would like the recommendations?',movies['title'].values)
 if st.button('Recommend'):
     names,posters=recommend(selected_movie_name)
     col1,col2,col3,col4,col5=st.columns(5)
