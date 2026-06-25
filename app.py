@@ -35,9 +35,10 @@ def recommend(movie):
     return recommended_movies,recommended_movie_posters
 st.title('Movie Recommender System')
 import pickle
+import gzip
 movie_dict=pickle.load(open('movie_dict.pkl','rb'))
 movies=pd.DataFrame(movie_dict)
-similarity=pickle.load(open('similarity.pkl','rb'))
+similarity=pickle.load(gzip.open('similarity.pkl.gz','rb'))
 selected_movie_name=st.selectbox('How would you like to be contacted?',movies['title'].values)
 if st.button('Recommend'):
     names,posters=recommend(selected_movie_name)
